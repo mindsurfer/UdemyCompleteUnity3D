@@ -9,25 +9,11 @@ public class MusicPlayer : MonoBehaviour
     var musicPlayerCount = FindObjectsOfType<MusicPlayer>().Length;
     if (musicPlayerCount == 1)
     {
-      print("created");
       DontDestroyOnLoad(gameObject);
     }
     else
     {
-      print("destroyed");
       Destroy(gameObject);
     }
-  }
-
-  // Use this for initialization
-  void Start () 
-  {
-    
-  }
-
-  // Update is called once per frame
-  void Update () 
-  {
-    
   }
 }

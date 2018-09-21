@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour 
 {
+  private void Awake()
+  {
+    DontDestroyOnLoad(gameObject);
+  }
 
   // Use this for initialization
   void Start () 
   {
-    var loadFirstLevel = StartCoroutine(LoadFirstLevel());
+    var loadFirstLevel = StartCoroutine(LoadFirstLevel(3f));
   }
 
   public void LoadLevel(int levelIndex)
@@ -17,9 +21,9 @@ public class LevelManager : MonoBehaviour
     SceneManager.LoadScene(levelIndex);
   }
 
-  private IEnumerator LoadFirstLevel()
+  public IEnumerator LoadFirstLevel(float waitDelay)
   {
-    yield return new WaitForSecondsRealtime(3f);
+    yield return new WaitForSecondsRealtime(waitDelay);
     LoadLevel(1);
   }
 }

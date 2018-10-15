@@ -15,12 +15,10 @@ public class CubeEditor : MonoBehaviour
     _waypoint = GetComponent<Waypoint>();
   }
 
-  // Update is called once per frame
   void Update()
   {
     SnapToGrid();
     UpdateLabel();
-    //SetWaypointColor();
   }
 
   private void SnapToGrid()
@@ -31,20 +29,9 @@ public class CubeEditor : MonoBehaviour
 
   private void UpdateLabel()
   {
-    var gridSize = _waypoint.GetGridSize();
     var gridPos = _waypoint.GetGridPos();
     var labelText = GetComponentInChildren<TextMesh>();
     labelText.text = $"{gridPos.x},{gridPos.y}";
     gameObject.name = labelText.text;
   }
-
-  //private void SetWaypointColor()
-  //{
-  //  if (_waypoint.IsStartPoint())
-  //    _waypoint.SetTopColor(Color.green);
-  //  else if (_waypoint.IsEndPoint())
-  //    _waypoint.SetTopColor(Color.red);
-  //  else
-  //    _waypoint.SetTopColor(Color.grey);
-  //}
 }

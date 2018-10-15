@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Waypoint : MonoBehaviour 
 {
-  //[SerializeField] bool StartPoint = false;
-  //[SerializeField] bool EndPoint = false;
+  public bool IsExplored;
+  public Waypoint ExploredFrom;
+  public bool IsPlaceable = true;
 
   const int GridSize = 10;
 
@@ -33,16 +34,6 @@ public class Waypoint : MonoBehaviour
       );
   }
 
-  //public bool IsStartPoint()
-  //{
-  //  return StartPoint;
-  //}
-
-  //public bool IsEndPoint()
-  //{
-  //  return EndPoint;
-  //}
-
   // Use this for initialization
   void Start() 
   {
@@ -53,6 +44,14 @@ public class Waypoint : MonoBehaviour
   void Update() 
   {
     
+  }
+
+  private void OnMouseOver()
+  {
+    if (Input.GetMouseButtonDown(0) && IsPlaceable)
+    {
+      FindObjectOfType<TowerFactory>().AddTower(this);
+    }
   }
 
   public void SetTopColor(Color color)
